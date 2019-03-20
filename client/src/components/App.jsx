@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
 import logo from '../logo.svg';
-import { SERVER_URL } from '../../config';
+import { SERVER_URL } from '../config';
 
 export default class App extends Component {
   state = {
