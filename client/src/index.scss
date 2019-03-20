@@ -49,7 +49,7 @@ body {
   }
 
   .App-header {
-    background-color: $primary;
+    background-color: #84bd00;
     padding: 20px;
     color: white;
 
@@ -98,4 +98,278 @@ body {
     font-size: 1.2em;
     color: $primary;
   }
+}
+// END STYLE FOR SECRET COMPONENT
+
+// START FORM STYLING 
+$base-bgcolor: #354152;
+$base-color: #7e8ba3;
+$base-font-weight: 300;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
+$base-font-family: Helvetica Neue;
+$base-font-family-fallback: sans-serif;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  color: $base-color;
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family, $base-font-family-fallback;
+  margin: 0;
+  min-height: 100%;
+}
+
+body.show {
+  background-size: cover;
+}
+
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  &__item {
+    &--start {
+      align-self: flex-start;
+    }
+    &--end {
+      align-self: flex-end;
+    }
+  }
+}
+
+.site {
+  &__logo {
+    margin-bottom: 2rem;
+  }
+}
+
+.page-description {
+  color: white;
+  margin-top: 15px;
+  text-align: center;
+}
+
+$input-placeholder-color: #7e8ba3;
+
+input {
+  border: 0;
+  font: inherit;
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+}
+
+.form {
+
+  &__field {
+    margin-bottom: 1rem;
+  }
+
+  input {
+    outline: 0;
+    padding: .5rem 1rem;
+
+    &[type="email"],
+    &[type="password"],
+    &[type="text"] {
+      width: 100%;
+    }
+  }
+}
+
+$grid-max-width: 25rem;
+$grid-width: 100%;
+
+.grid {
+  margin: 0 auto;
+  max-width: $grid-max-width;
+  width: $grid-width;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+svg {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+$link-color: #7e8ba3;
+
+a {
+  color: $link-color
+}
+
+.loginTitle {
+  margin-top: 20px;
+}
+
+.login {
+  background-color: white;
+  border-radius: 35px;
+  text-align: center;
+
+  input {
+    border: 0.5px solid #CCCCCC;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+
+    &[type="email"],
+    &[type="password"] {
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      background-position: 1rem 50%;
+    }
+
+    &[type="email"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256.017 273.436l-205.17-170.029h410.904l-205.734 170.029zm-.034 55.462l-205.983-170.654v250.349h412v-249.94l-206.017 170.245z"/></svg>');
+    }
+
+    &[type="password"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
+    }
+
+    &[type="submit"] {
+      background-color: #84bd00;
+      border: 0;
+      color: #fff;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+}
+.signup {
+  background-color: white;
+  border-radius: 35px;
+  box-shadow: 0 0 250px #000;
+  text-align: center;
+  padding: 2rem 2rem;
+
+  input {
+    border: 0.5px solid #CCCCCC;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+
+    &[type="email"],
+    &[type="password"] {
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      background-position: 1rem 50%;
+    }
+
+    &[type="email"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256.017 273.436l-205.17-170.029h410.904l-205.734 170.029zm-.034 55.462l-205.983-170.654v250.349h412v-249.94l-206.017 170.245z"/></svg>');
+    }
+
+    &[type="password"] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
+    }
+
+    &[type="submit"] {
+      background-color: #84bd00;
+      border: 0;
+      color: #fff;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+}
+.ss-logo {
+  height: 120px;
+  margin-bottom: 15px;
+  width: 120px;
+}
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+#set-profile-picture {
+  border: 0;
+  margin-bottom: 15px;
+}
+.form-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.choose-type {
+  margin-bottom: 25px;
+  margin-right: 20px;
+}
+// END OF LOGIN & SIGNUP STYLING
+
+// PRE SIGNUP STYLING
+.pre-signup {
+  margin-top: 40px;
+}
+// END SIGNUP STYLING
+
+// HOME PAGE STYLING
+.important-type-link {
+  margin-left: 40px;
+}
+.container {
+  margin: 20px 10% 0 10%;
+  max-width: 5000px !important;
+  width: 80% !important;
+}
+.band-image {
+  border-radius: 10px;
+  margin: 0 5%;
+  width: 90%;
+}
+.bands-home-title {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 35px;
+  margin-top: 15px;
+}
+.artist-type-icon {
+  height: 200px;
+  margin-bottom: 15px;
+}
+.artist-type-div {
+  text-align: center;
+}
+.show-artists-title {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 50px;
+}
+// END HOMEPAGE STYLING
+
+// MUSICIAN SIGNUP STYLING 
+.form-title {
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+.artist-type-dropdown {
+  margin-left: 20px;
+}
+.musician-type-image {
+  height: 100px;
+  width: 100px;
+}
+// END MUSICIAN SIGNUP STYLING
+
+// MUSICIAN RESULT STYLING
+.each-musician {
+  margin-bottom: 40px;
+}
+.youtube-video {
+  height: 269px;
+  width: 480px;
 }

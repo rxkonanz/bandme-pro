@@ -38,30 +38,43 @@ export default {
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         localStorage.setItem('user', JSON.stringify(res.data))
+        localStorage.setItem('userEmail', res.data.email)
+        localStorage.setItem('artistType', res.data.artistType)
         return res.data
       })
       .catch(errHandler)
   },
 
-  login(username, password) {
+  login(email, password) {
     return service
       .post('/login', {
-        username,
+        email,
         password,
       })
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         localStorage.setItem('user', JSON.stringify(res.data))
+        localStorage.setItem('userEmail', res.data.email)
+        localStorage.setItem('artistType', res.data.artistType)
         return res.data
       })
       .catch(errHandler)
+  },
+
+  likeVideo(userInfo) {
+    return service
+    .post('/like-video', userInfo)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(errHandler)
   },
 
   logout() {
     localStorage.removeItem('user')
     return service
       .get('/logout')
-  },
+  }
 
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+import MusicianSignUp from './pages/MusicianSignUp';
+import BandSignUp from './pages/BandSignUp';
+import PreSignUp from './pages/PreSignUp';
+import Guitarists from './pages/Guitarists';
+import Drummers from './pages/Drummers';
+import Singers from './pages/Singers';
 import api from '../api';
 import logo from '../logo.svg';
-import { SERVER_URL } from '../config';
 
 export default class App extends Component {
   state = {
@@ -38,51 +41,53 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">MERN Boilerplate</h1>
-          user: {this.state.user.username}
-          <NavLink to="/" exact>Home</NavLink>
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-          <NavLink to="/secret">Secret</NavLink>
+          <a href="/"><h1 className="App-title">BandME</h1></a>
+          {!api.isLoggedIn() && <NavLink to="/login">Log In</NavLink>}
+          {!api.isLoggedIn() && <NavLink to="/signup">Register</NavLink>}
+          {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
         </header>
         <Switch>
-
 
         <Route
             exact
             path='/'
-            render={(props) => <Home {...props}  setUser={this.setUser} />}
+            render={(props) => <Home {...props}  setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route 
+            path='/home'
+            render={(props) => <Home {...props} setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route
+            path='/musicians/guitar'
+            render={(props) => <Guitarists {...props} setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route
+            path='/musicians/drummer'
+            render={(props) => <Drummers {...props} setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route
+            path='/musicians/singer'
+            render={(props) => <Singers {...props} setUser={this.setUser} user={this.state.user}/>}
           />
           <Route
             path='/signup'
-            render={(props) => <Signup {...props} setUser={this.setUser} />}
+            render={(props) => <PreSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/musician-signup'
+            render={(props) => <MusicianSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/band-signup'
+            render={(props) => <BandSignUp {...props} setUser={this.setUser} />}
           />
           <Route
             path='/login'
             render={(props) => <Login {...props} setUser={this.setUser}/>}
           />
-          
-          
           <Route render={() => <h2>404</h2>} />
-
-
         </Switch>
       </div>
     );
   }
 }
-
-/*          <Route
-            path='/'
-            render={(props) => <Home {...props} setUser={this.setUser} />}
-          />
-          <Route
-            path='/signup'
-            render={(props) => <Signup {...props} setUser={this.setUser} />}
-          />
-          <Route
-            path='/login'
-            render={(props) => <Login {...props} setUser={this.setUser}/>}
-          />*/
