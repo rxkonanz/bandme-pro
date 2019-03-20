@@ -37,7 +37,6 @@ app.use(cookieParser())
 // Example: http://localhost:5000/favicon.ico => Display "~/client/build/favicon.ico"
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-
 // Enable authentication using session + passport
 app.use(session({
   secret: process.env.SESSION_SECRET || 'irongenerator',
