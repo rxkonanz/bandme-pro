@@ -50,4 +50,13 @@ router.post("/like-video", (req, res) => {
   ).exec().then(save=>res.end())
 })
 
+router.post("/band-profile", (req, res) => {
+  let bandId = req.body.bandId
+  console.log(bandId)
+  User.findOne({_id: bandId})
+  .then(band => 
+    res.json({band})
+  )
+})
+
 module.exports = router;

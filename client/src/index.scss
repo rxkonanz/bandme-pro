@@ -394,3 +394,22 @@ a {
   text-align: center;
   width: 100%;
 }
+// END SIGNUP STYLING
+
+// START BAND PROFILE STYLING
+.band-profile-container {
+  margin: 20px auto;
+  width: 450px;
+}
+.band-profile-picture {
+  border-radius: 10px;
+  height: 300px;
+  width: auto;
+}
+.band-name {
+  margin-top: 10px;
+  text-align: left;
+}
+.band-contact-info {
+  text-align: left;
+}
