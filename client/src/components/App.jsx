@@ -8,6 +8,7 @@ import PreSignUp from './pages/PreSignUp';
 import Guitarists from './pages/Guitarists';
 import Drummers from './pages/Drummers';
 import Singers from './pages/Singers';
+import BandProfile from './pages/BandProfile'
 import api from '../api';
 import logo from '../logo.svg';
 
@@ -72,6 +73,10 @@ export default class App extends Component {
           <Route
             path='/signup'
             render={(props) => <PreSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/bands/:bandId'
+            render={(props) => <BandProfile {...props} setUser={this.setUser} />}
           />
           <Route
             path='/musician-signup'
