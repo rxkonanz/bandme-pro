@@ -11,5 +11,4 @@ export default class PreSignUp extends Component {
             </div>
         )
     }
-
 }

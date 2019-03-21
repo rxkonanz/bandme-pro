@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import { SERVER_URL } from '../../config';
 
 export default class Drummers extends Component {
 
@@ -15,7 +16,7 @@ export default class Drummers extends Component {
     }
 
     getDrummers = () => {
-        Axios.get("http://localhost:5000/api/drummers")
+        Axios.get(`${SERVER_URL}/drummers`)
            .then(res => {
              let drummersArray = res.data.allDrummers
              this.setState({

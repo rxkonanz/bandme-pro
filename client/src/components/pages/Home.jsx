@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
 import { Redirect } from 'react-router-dom'
+import { SERVER_URL } from '../../config'
 
 export default class Home extends Component {
 
@@ -22,7 +23,7 @@ export default class Home extends Component {
   }
 
   getBands = () => {
-    Axios.get("http://localhost:5000/api/all-bands")
+    Axios.get(`${SERVER_URL}/all-bands`)
       .then(res => {
         let bandsArray = res.data.allBands
         // console.log(bandsArray)

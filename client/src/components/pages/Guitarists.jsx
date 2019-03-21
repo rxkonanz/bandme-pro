@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
 import { Redirect } from 'react-router-dom'
+import { SERVER_URL } from '../../config'
 
 export default class Guitarists extends Component {
 
@@ -15,7 +16,7 @@ export default class Guitarists extends Component {
     }
 
     getGuitarists = () => {
-        Axios.get("http://localhost:5000/api/guitarists")
+        Axios.get(`${SERVER_URL}/guitarists`)
            .then(res => {
              let guitaristsArray = res.data.allGuitarists
              this.setState({
@@ -26,7 +27,7 @@ export default class Guitarists extends Component {
 
     likeVideo = (musicianEmail) => {
         alert("You liked this video!");
-        Axios.post("http://localhost:5000/api/like-video", {bandEmail: this.state.currentUser, musicianEmail})
+        Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
             .then(res => {
                 console.log(res)
             })
