@@ -12,7 +12,10 @@ export default class Home extends Component {
     allBands: []
   }
   componentDidMount() {
-    this.getBands() //calls once 
+    this.getBands() //calls once
+    if(this.state.artistType == 'band') {
+      document.getElementById("bands-like-you-title").style.display= "none";
+    } 
   }
 
   logIn = () => {
@@ -68,13 +71,18 @@ export default class Home extends Component {
             )
     }
     else {
-      let showBands = this.state.allBands.map( (band) => {
-        return  <div className="col-xl-4 col-lg-4 band-box">
-                  <img src={band.imgLink} className="band-image" alt="alt" />
-                  <p>{band.name}</p>
-                </div>
-      })
-      return showBands;
+      if(this.state.allBands.length === 0) {
+        return <p className="no-band-yet">:( no band has liked you yet <br></br><br></br> (don't worry, we'll find you one!)</p>
+      }
+      else {
+        let showBands = this.state.allBands.map( (band) => {
+          return  <div className="col-xl-4 col-lg-4 band-box">
+                    <img src={band.imgLink} className="band-image" alt="alt" />
+                    <p>{band.name}</p>
+                  </div>
+        })
+        return showBands;
+      }
     }
   }
 
@@ -83,6 +91,7 @@ export default class Home extends Component {
       <div className="Home">
         {this.logIn()}
         <div className="container">
+          <h1 id="bands-like-you-title">Bands that have liked you:</h1>
           <div className="row">
             {this.showData()}
           </div>
