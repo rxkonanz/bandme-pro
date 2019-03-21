@@ -25,12 +25,20 @@ export default class Drummers extends Component {
         })
     }
 
+    likeVideo = (musicianEmail) => {
+        alert("You liked this video!");
+        Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
+            .then(res => {
+                console.log(res)
+            })
+    }
+
     showDrummers = () => {
         let result = this.state.allDrummers.map((drummer,i) => {
           return (<div className="each-musician col-xl-6 col-lg-6">
                     <iframe className="youtube-video" title="youtubevideo" src={drummer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>{drummer.name}</p>
-                    <button>Like</button>
+                    <button onClick={(e) => this.likeVideo(drummer.email)}>Like</button>
                   </div>)
         })
         return result

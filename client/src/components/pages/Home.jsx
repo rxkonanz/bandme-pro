@@ -77,8 +77,9 @@ export default class Home extends Component {
       else {
         let showBands = this.state.allBands.map( (band) => {
           return  <div className="col-xl-4 col-lg-4 band-box">
+                    <a href={"/bands/" + String(band._id)}>
                     <img src={band.imgLink} className="band-image" alt="alt" />
-                    <p>{band.name}</p>
+                    <p>{band.name}</p></a>
                   </div>
         })
         return showBands;
