@@ -3,6 +3,7 @@ import Axios from 'axios';
 import api from '../../api'
 import { Redirect } from 'react-router-dom'
 import { SERVER_URL } from '../../config'
+import { BADSTR } from 'dns';
 
 export default class Home extends Component {
 
@@ -26,9 +27,19 @@ export default class Home extends Component {
     Axios.get(`${SERVER_URL}/all-bands`)
       .then(res => {
         let bandsArray = res.data.allBands
-        // console.log(bandsArray)
+        
+        let likedByBands = []
+        bandsArray.map((band) => {
+          if(band.likedMusicians.includes(this.props.user.email)) {
+            likedByBands.push(band)
+          }
+        })
+
+        console.log("CHECK HERE PERRO")
+        console.log(likedByBands)
+        
         this.setState({
-          allBands:res.data.allBands
+          allBands: likedByBands
         })
       })
   }

@@ -42,10 +42,12 @@ router.get("/drummers", (req, res) => {
 router.post("/like-video", (req, res) => {
   let bandEmail = req.body.bandEmail
   let musicianEmail = req.body.musicianEmail
+  console.log(bandEmail)
+  console.log(musicianEmail)
   User.update(
     {email: bandEmail},
-    {$push: {likedMusicians: musicianEmail}}
-  )
+    {$addToSet: {likedMusicians: musicianEmail}}
+  ).exec().then(save=>res.end())
 })
 
 module.exports = router;
