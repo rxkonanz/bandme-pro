@@ -45,6 +45,14 @@ export default class Singers extends Component {
         window.location.reload();
     }
 
+    unlikeVideo = (musicianEmail) => {
+        Axios.post(`${SERVER_URL}/unlike-video`, {bandEmail: this.state.currentUser, musicianEmail})
+        .then(res => {
+            console.log(res)
+        })
+        window.location.reload();
+    }
+
     showSingers = () => {
 
         let result = this.state.allSingers.map((singer,i) => {
@@ -53,7 +61,7 @@ export default class Singers extends Component {
                 return (<div className="each-musician col-xl-6 col-lg-6">
                             <iframe className="youtube-video" title="youtubevideo" src={singer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p>{singer.name}</p>
-                            <button className="liked-button" onClick={(e) => this.likeVideo(singer.email)}>Liked</button>
+                            <button className="liked-button" onClick={(e) => this.unlikeVideo(singer.email)}>Liked</button>
                         </div>)
             }
             else {

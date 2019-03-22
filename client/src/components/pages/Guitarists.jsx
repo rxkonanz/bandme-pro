@@ -8,11 +8,13 @@ export default class Guitarists extends Component {
 
     state = {
         allGuitarists: [],
-        currentUser: localStorage.userEmail
+        currentUser: localStorage.userEmail,
+        likedMusicians: []
     }
 
     componentDidMount() {
         this.getGuitarists();
+        this.getLikedMusicians();
     }
 
     getGuitarists = () => {
@@ -25,21 +27,46 @@ export default class Guitarists extends Component {
         })
     }
 
-    likeVideo = (musicianEmail) => {
-        alert("You liked this video!");
-        Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
-            .then(res => {
-                console.log(res)
+    getLikedMusicians = () => {
+        Axios.post(`${SERVER_URL}/liked-musicians`, {currentUser: this.state.currentUser})
+        .then(res => {
+            this.setState({
+                likedMusicians: res.data.musicians[0].likedMusicians
             })
+        })
+    }
+
+    likeVideo = (musicianEmail) => {
+        Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
+        .then(res => {
+            console.log(res)
+        })
+        window.location.reload();
+    }
+
+    unlikeVideo = (musicianEmail) => {
+        Axios.post(`${SERVER_URL}/unlike-video`, {bandEmail: this.state.currentUser, musicianEmail})
+        .then(res => {
+            console.log(res)
+        })
+        window.location.reload();
     }
 
     showGuitarists = () => {
         let result = this.state.allGuitarists.map((guitarist,i) => {
-          return (<div className="each-musician col-xl-6 col-lg-12">
-                    <iframe className="youtube-video" title="youtubevideo" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>{guitarist.name}</p>
-                    <button onClick={(e) => this.likeVideo(guitarist.email)}>Like</button>
-                  </div>)
+            
+            if(this.state.likedMusicians.includes(guitarist.email)){
+                return (<div className="each-musician col-xl-6 col-lg-6">
+                            <iframe className="youtube-video" title="youtubevideo" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p>{guitarist.name}</p>
+                            <button className="liked-button" onClick={(e) => this.unlikeVideo(guitarist.email)}>Liked</button>
+                        </div>)
+            }
+            return (<div className="each-musician col-xl-6 col-lg-12">
+                        <iframe className="youtube-video" title="youtubevideo" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>{guitarist.name}</p>
+                        <button onClick={(e) => this.likeVideo(guitarist.email)}>Like</button>
+                    </div>)
         })
         return result
       }

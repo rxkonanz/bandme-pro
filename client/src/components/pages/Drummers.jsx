@@ -37,11 +37,18 @@ export default class Drummers extends Component {
     }
 
     likeVideo = (musicianEmail) => {
-        alert("You liked this video!");
         Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
             .then(res => {
                 console.log(res)
             })
+        window.location.reload();
+    }
+
+    unlikeVideo = (musicianEmail) => {
+        Axios.post(`${SERVER_URL}/unlike-video`, {bandEmail: this.state.currentUser, musicianEmail})
+        .then(res => {
+            console.log(res)
+        })
         window.location.reload();
     }
 
@@ -52,7 +59,7 @@ export default class Drummers extends Component {
                 return (<div className="each-musician col-xl-6 col-lg-6">
                             <iframe className="youtube-video" title="youtubevideo" src={drummer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <p>{drummer.name}</p>
-                            <button className="liked-button" onClick={(e) => this.likeVideo(drummer.email)}>Liked</button>
+                            <button className="liked-button" onClick={(e) => this.unlikeVideo(drummer.email)}>Liked</button>
                         </div>)
             }
             else {

@@ -42,11 +42,18 @@ router.get("/drummers", (req, res) => {
 router.post("/like-video", (req, res) => {
   let bandEmail = req.body.bandEmail
   let musicianEmail = req.body.musicianEmail
-  console.log(bandEmail)
-  console.log(musicianEmail)
   User.update(
     {email: bandEmail},
     {$addToSet: {likedMusicians: musicianEmail}}
+  ).exec().then(save=>res.end())
+})
+
+router.post("/unlike-video", (req, res) => {
+  let bandEmail = req.body.bandEmail
+  let musicianEmail = req.body.musicianEmail
+  User.update(
+    {email: bandEmail},
+    {$pull: {likedMusicians: musicianEmail}}
   ).exec().then(save=>res.end())
 })
 
