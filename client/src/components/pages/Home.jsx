@@ -30,20 +30,23 @@ export default class Home extends Component {
     Axios.get(`${SERVER_URL}/all-bands`)
       .then(res => {
         let bandsArray = res.data.allBands
-        
-        let likedByBands = []
-        bandsArray.map((band) => {
-          if(band.likedMusicians.includes(this.props.user.email)) {
-            likedByBands.push(band)
-          }
-        })
-
-        console.log("CHECK HERE PERRO")
-        console.log(likedByBands)
-        
-        this.setState({
-          allBands: likedByBands
-        })
+        if(bandsArray === 'none'){
+          this.setState({
+            allBands: bandsArray
+          })
+        }
+        else {
+          let likedByBands = []
+          bandsArray.map((band) => {
+            if(band.likedMusicians.includes(this.props.user.email)) {
+              likedByBands.push(band)
+            }
+          })
+          
+          this.setState({
+            allBands: likedByBands
+          })
+        }
       })
   }
 
