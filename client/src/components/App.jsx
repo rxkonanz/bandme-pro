@@ -9,6 +9,7 @@ import Guitarists from './pages/Guitarists';
 import Drummers from './pages/Drummers';
 import Singers from './pages/Singers';
 import BandProfile from './pages/BandProfile'
+import LandingPage from './pages/LandingPage'
 import api from '../api';
 import logo from '../logo.svg';
 
@@ -42,7 +43,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <a href="/"><h1 className="App-title">BandME</h1></a>
+          <a href="/home"><h1 className="App-title">BandME</h1></a>
           {!api.isLoggedIn() && <NavLink to="/login">Log In</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/signup">Register</NavLink>}
           {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
@@ -52,7 +53,7 @@ export default class App extends Component {
         <Route
             exact
             path='/'
-            render={(props) => <Home {...props}  setUser={this.setUser} user={this.state.user}/>}
+            render={(props) => <LandingPage {...props}  setUser={this.setUser} user={this.state.user}/>}
           />
           <Route 
             path='/home'

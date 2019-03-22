@@ -413,3 +413,21 @@ a {
 .band-contact-info {
   text-align: left;
 }
+.liked-button {
+  background-color: #DEE2E6;
+  font-style: italic;
+}
+// END OF BAND PROFILE STYLING
+
+// START LANDING PAGE STYLING
+.landing-page {
+  background-image: url('landing-page.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.landing-page-title {
+  font-size: 68px;
+  color: white;
+  padding-top: 30px;
+}

@@ -8,11 +8,13 @@ export default class Singers extends Component {
 
     state = {
         allSingers: [],
-        currentUser: localStorage.userEmail
+        currentUser: localStorage.userEmail,
+        likedMusicians: []
     }
 
     componentDidMount() {
-        this.getSingers();
+        this.getLikedMusicians()
+        this.getSingers()
     }
 
     getSingers = () => {
@@ -25,21 +27,42 @@ export default class Singers extends Component {
         })
     }
 
+    getLikedMusicians = () => {
+        Axios.post(`${SERVER_URL}/liked-musicians`, {currentUser: this.state.currentUser})
+        .then(res => {
+            this.setState({
+                likedMusicians: res.data.musicians[0].likedMusicians
+            })
+        })
+    }
+
     likeVideo = (musicianEmail) => {
-        alert("You liked this video!");
+        //alert("You liked this video!");
         Axios.post(`${SERVER_URL}/like-video`, {bandEmail: this.state.currentUser, musicianEmail})
             .then(res => {
                 console.log(res)
             })
+        window.location.reload();
     }
 
     showSingers = () => {
+
         let result = this.state.allSingers.map((singer,i) => {
-          return (<div className="each-musician col-xl-6 col-lg-6">
-                    <iframe className="youtube-video" title="youtubevideo" src={singer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>{singer.name}</p>
-                    <button onClick={(e) => this.likeVideo(singer.email)}>Like</button>
-                  </div>)
+
+            if(this.state.likedMusicians.includes(singer.email)){
+                return (<div className="each-musician col-xl-6 col-lg-6">
+                            <iframe className="youtube-video" title="youtubevideo" src={singer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p>{singer.name}</p>
+                            <button className="liked-button" onClick={(e) => this.likeVideo(singer.email)}>Liked</button>
+                        </div>)
+            }
+            else {
+                return (<div className="each-musician col-xl-6 col-lg-6">
+                        <iframe className="youtube-video" title="youtubevideo" src={singer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>{singer.name}</p>
+                        <button onClick={(e) => this.likeVideo(singer.email)}>Like</button>
+                    </div>)
+            }
         })
         return result
       }

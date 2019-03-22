@@ -59,4 +59,11 @@ router.post("/band-profile", (req, res) => {
   )
 })
 
+router.post("/liked-musicians", (req, res) => {
+  User.find({email: req.body.currentUser})
+  .then(musicians =>
+    res.json({musicians})
+  )
+})
+
 module.exports = router;
