@@ -32,7 +32,7 @@ export default class Home extends Component {
         let bandsArray = res.data.allBands
         if(bandsArray === 'none'){
           this.setState({
-            allBands: bandsArray
+            allBands: [bandsArray]
           })
         }
         else {
@@ -74,7 +74,7 @@ export default class Home extends Component {
             )
     }
     else {
-      if(this.state.allBands === 'none') {
+      if(this.state.allBands === ['none']) {
         return <p className="no-band-yet">:( no band has liked you yet <br></br><br></br> (don't worry, we'll find you one!)</p>
       }
       else {
