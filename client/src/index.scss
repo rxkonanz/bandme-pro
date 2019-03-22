@@ -412,7 +412,12 @@ a {
   text-align: center;
 }
 .band-info {
+  color: black;
   margin-top: 20px;
+}
+.band-info a {
+  color: blue;
+  text-decoration: underline;
 }
 .band-contact-info {
   text-align: left;
@@ -451,6 +456,7 @@ a {
 .logout-button {
   margin-top: 20px;
 }
+
 
 @media (max-width: 991.98px) {
 
