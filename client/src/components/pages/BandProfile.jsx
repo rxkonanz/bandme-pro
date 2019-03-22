@@ -24,8 +24,7 @@ export default class BandProfile extends Component {
   }
 
   showProfile = () => {
-    let bandEmail = String(this.state.band.bandEmail)
-
+    let bandEmail = String(this.state.band.email)
     return <Fragment>
             <h3 className="band-name">{this.state.band.name}</h3>
             <img src={this.state.band.imgLink} className="band-profile-picture" alt=""></img>
