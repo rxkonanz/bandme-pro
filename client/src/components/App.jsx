@@ -10,6 +10,7 @@ import Drummers from './pages/Drummers';
 import Singers from './pages/Singers';
 import BandProfile from './pages/BandProfile'
 import LandingPage from './pages/LandingPage'
+import Profile from './pages/Profile'
 import api from '../api';
 import logo from '../logo.svg';
 
@@ -36,7 +37,6 @@ export default class App extends Component {
     api.logout()
     //this.setState({user:null})
     this.setUser()
-
   }
 
   render() {
@@ -46,7 +46,7 @@ export default class App extends Component {
           <a href="/home"><h1 className="App-title">BandME</h1></a>
           {!api.isLoggedIn() && <NavLink to="/login">Log In</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/signup">Register</NavLink>}
-          {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+          {api.isLoggedIn() && <NavLink to="/profile">Profile</NavLink>}
         </header>
         <Switch>
 
@@ -74,6 +74,10 @@ export default class App extends Component {
           <Route
             path='/signup'
             render={(props) => <PreSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/profile'
+            render={(props) => <Profile {...props} user={this.state.user} />}
           />
           <Route
             path='/bands/:bandId'

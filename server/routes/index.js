@@ -14,7 +14,13 @@ router.get("/all-musicians", (req, res) => {
 router.get("/all-bands", (req, res) => {
   User.find({artistType: 'band'})
   .then(allBands => {
-    res.json({allBands})
+    if(allBands.length === 0){
+      res.json({allBands: 'none'})
+    }
+    else {
+      res.json({allBands})
+    }
+    
   })
 })
 

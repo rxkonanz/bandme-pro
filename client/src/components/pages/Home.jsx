@@ -71,7 +71,7 @@ export default class Home extends Component {
             )
     }
     else {
-      if(this.state.allBands.length === 0) {
+      if(this.state.allBands === 'none') {
         return <p className="no-band-yet">:( no band has liked you yet <br></br><br></br> (don't worry, we'll find you one!)</p>
       }
       else {

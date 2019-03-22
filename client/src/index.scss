@@ -331,7 +331,7 @@ a {
 .band-image {
   border-radius: 10px;
   margin: 0 5%;
-  width: 90%;
+  height: 300px;
 }
 .bands-home-title {
   font-family: 'Poppins', sans-serif;
@@ -430,4 +430,20 @@ a {
   font-size: 68px;
   color: white;
   padding-top: 30px;
+}
+// END LANDING PAGE STYLING
+
+// START PROFILE PAGE STYLING
+.profile-container {
+  margin: auto;
+  width: 40%;
+}
+.profile-picture {
+  width: 400px;
+}
+.profile-title {
+  margin: 25px 0;
+}
+.logout-button {
+  margin-top: 20px;
 }
