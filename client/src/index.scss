@@ -331,7 +331,8 @@ a {
 .band-image {
   border-radius: 10px;
   margin: 0 5%;
-  height: 300px;
+  height: 280px;
+  width: 100%;
 }
 .bands-home-title {
   font-family: 'Poppins', sans-serif;
@@ -407,8 +408,11 @@ a {
   width: auto;
 }
 .band-name {
-  margin-top: 10px;
-  text-align: left;
+  font-weight: 700;
+  text-align: center;
+}
+.band-info {
+  margin-top: 20px;
 }
 .band-contact-info {
   text-align: left;
@@ -446,4 +450,14 @@ a {
 }
 .logout-button {
   margin-top: 20px;
+}
+
+@media (max-width: 991.98px) {
+
+  .band-image {
+    margin: auto;
+    width: 80%;
+    height: 300px;
+  }
+
 }

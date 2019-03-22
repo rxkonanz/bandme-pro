@@ -10,7 +10,8 @@ export default class MusicianSignup extends Component {
       password: "",
       message: null,
       artistType:'band',
-      imgLink: ""
+      imgLink: "",
+      spotifyLink: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -29,7 +30,8 @@ export default class MusicianSignup extends Component {
         email: this.state.email,
         name: this.state.name,
         password: this.state.password,
-        artistType: this.state.artistType
+        artistType: this.state.artistType,
+        spotifyLink: this.state.spotifyLink
     }
     api.signup(data)
       .then(result => {
@@ -48,7 +50,8 @@ export default class MusicianSignup extends Component {
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
-      imgLink: this.state.imgLink
+      imgLink: this.state.imgLink,
+      spotifyLink: this.state.spotifyLink
     }
     
     api.signup(data)
@@ -70,6 +73,10 @@ export default class MusicianSignup extends Component {
 
                   <div className="form__field">
                     <input type="text" value={this.state.imgLink} name="imgLink" placeholder="link to profile image" onChange={this.handleInputChange} />
+                  </div>
+
+                  <div className="form__field">
+                    <input type="text" value={this.state.spotifyLink} name="spotifyLink" placeholder="link to spotify" onChange={this.handleInputChange} />
                   </div>
 
                   <div className="form__field">

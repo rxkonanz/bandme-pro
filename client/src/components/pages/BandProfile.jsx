@@ -24,10 +24,15 @@ export default class BandProfile extends Component {
   }
 
   showProfile = () => {
+    let bandEmail = String(this.state.band.bandEmail)
+
     return <Fragment>
-            <img src={this.state.band.imgLink} className="band-profile-picture" alt=""></img>
             <h3 className="band-name">{this.state.band.name}</h3>
-            <p className="band-contact-info">We like what you've got! Contact Us: {this.state.band.email}</p>
+            <img src={this.state.band.imgLink} className="band-profile-picture" alt=""></img>
+            <div className="band-info">
+              <p className="band-contact-info">We like what you've got! <br></br><a href={`mailto:${bandEmail}?Subject=Hello%20again`}>Contact Us</a></p>
+              <p className="band-contact-info">Check out our <a href={this.state.band.spotifyLink}>Music</a></p>
+            </div>
            </Fragment>
   }
 

@@ -12,7 +12,7 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
   console.log('CHECK HERE')
   
   console.log(req.body,req.file)
-  const { email, name, password, artistType, ytLink, imgLink, instrument } = req.body
+  const { email, name, password, artistType, ytLink, imgLink, instrument, spotifyLink } = req.body
   if (!email || !password) {
     res.status(400).json({ message: "Indicate email and password" })
     return
@@ -25,7 +25,7 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
       }
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(password, salt)
-      const newUser = new User({ email, password: hashPass, name, artistType, ytLink, imgLink, instrument })
+      const newUser = new User({ email, password: hashPass, name, artistType, ytLink, imgLink, instrument, spotifyLink })
       return newUser.save()
     })
     .then(userSaved => {
