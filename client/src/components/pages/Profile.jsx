@@ -10,7 +10,6 @@ export default class Profile extends Component {
 
   handleLogoutClick(e) {
     api.logout()
-    //this.setState({user:null})
     this.setUser()
     this.props.history.push('/login')
   }
